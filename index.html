@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head ng-app="todoList">
+
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>NG-Todo</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.14/angular.js"></script>
-<script src="script.js"></script>
+
+<body ng-app="todoList" ng-controller="todoCtrl">
+  <h1>Basic Todo-List</h1>
+
+  <form ng-submit="addTodo()">
+    <input type="text" ng-model="todoInput" size="50" placeholder="Add New">
+    <input type="submit" value="Add New">
+  </form>
+
+  <br>
+
+  <div ng-repeat="item in todoList">
+    <div ng-class="item.done ? 'done' : 'no-done'">
+      <input type="checkbox" ng-model="item.done">
+      <span ng-bind="item.todoText"></span>
+      <button ng-click="removeTodo(item)">X</button>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.14/angular.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
