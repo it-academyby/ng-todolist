@@ -1,8 +1,13 @@
 angular
   .module('todoList', [])
   .controller('todoCtrl', function ($scope) {
-    // Сюда добавить начальную загрузку
-    $scope.todoList = [];
+    try {
+      $scope.todoList = JSON.parse(localStorage.getItem('todoList')) || [];
+    } catch(e) {
+      $scope.todoList = [];
+    }
+    $scope.saveListToLS = () => localStorage.setItem('todoList', JSON.stringify($scope.todoList));
+    $scope.$watch('todoList', $scope.saveListToLS, true);
 
     // Добавление нового пункта
     $scope.addTodo = () => {
