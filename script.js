@@ -1,5 +1,5 @@
 angular
-  .module('todoList', [])
+  .module('todoList', ['ngAnimate'])
   .controller('todoCtrl', function ($scope) {
     try {
       $scope.todoList = JSON.parse(localStorage.getItem('todoList')) || [];
