@@ -21,7 +21,7 @@
 
   <div ng-repeat="item in todoList">
     <div ng-class="item.done ? 'done' : 'no-done'">
-      <input type="checkbox" ng-model="item.done">
+      <input type="checkbox" ng-checked="item.done" ng-click="toggleTodo(item)">
       <span ng-bind="item.todoText"></span>
       <button ng-click="removeTodo(item)">X</button>
     </div>

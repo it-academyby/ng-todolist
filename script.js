@@ -9,6 +9,11 @@ angular
     $scope.saveListToLS = () => localStorage.setItem('todoList', JSON.stringify($scope.todoList));
     $scope.$watch('todoList', $scope.saveListToLS, true);
 
+    $scope.toggleTodo = (item) => {
+      item.done = !item.done;
+      $scope.saveListToLS();
+    };
+
     // Добавление нового пункта
     $scope.addTodo = () => {
       $scope.todoList.push({
