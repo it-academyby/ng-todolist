@@ -10,12 +10,12 @@
 </head>
 
 <body ng-app="gameOfWords" ng-controller="wordsCtrl">
-  <h1>Just type it</h1>
+  <h1>Just type it: Score - {{(words | filter:{author:'You'}).length}}</h1>
 
-  <form ng-submit="addWord()">
-    <h1>{{error}}</h1>
+  <h3>{{error}} Осталось: {{timer}}</h3>
+  <form ng-submit="addWord()" ng-show="gameIsActive">
     <input type="text" ng-model="userInput" size="50" placeholder="Type">
-    <input type="submit" value="Add">
+    <button>Add {{userInput}}</button>
   </form>
 
   <br>

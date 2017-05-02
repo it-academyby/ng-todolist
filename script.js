@@ -13,10 +13,18 @@ const getLastLetter = (word) => {
 
 angular
   .module('gameOfWords', ['ngAnimate'])
-  .controller('wordsCtrl', function ($scope) {
+  .controller('wordsCtrl', function ($scope, $timeout, $interval) {
     let getLastWord = () => $scope.words[$scope.words.length -1].text;
     let wasWordUsed = (uWord) => $scope.words.find((item) => item.text.toUpperCase() === uWord);
     $scope.error = null;
+    $scope.gameIsActive = true;
+    $scope.timer = 35;
+    let interval = $interval(() => $scope.timer = $scope.timer - 1, 1000);
+    $timeout(() => {
+        $scope.gameIsActive = false;
+        $interval.cancel(interval);
+    }, $scope.timer*1000);
+
     $scope.words = [{
         text: words[parseInt(Math.random() * words.length)],
         author: 'Computer'
@@ -62,6 +70,5 @@ angular
         author: 'Computer' 
       });
      $scope.userInput = getLastLetter(getLastWord());
-
     };
 });
