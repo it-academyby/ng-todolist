@@ -9,25 +9,25 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
-<body ng-app="todoList" ng-controller="todoCtrl">
-  <h1>Basic Todo-List</h1>
+<body ng-app="gameOfWords" ng-controller="wordsCtrl">
+  <h1>Just type it</h1>
 
-  <form ng-submit="addTodo()">
-    <input type="text" ng-model="todoInput" size="50" placeholder="Add New">
-    <input type="submit" value="Add New">
+  <form ng-submit="addWord()">
+    <h1>{{error}}</h1>
+    <input type="text" ng-model="userInput" size="50" placeholder="Type">
+    <input type="submit" value="Add">
   </form>
 
   <br>
 
-  <div ng-repeat="item in todoList">
+  <div ng-repeat="item in words">
     <div ng-class="item.done ? 'done' : 'no-done'" class="todo-item">
-      <input type="checkbox" ng-checked="item.done" ng-click="toggleTodo(item)">
-      <span ng-bind="item.todoText"></span>
-      <button ng-click="removeTodo(item)">X</button>
+      <span>{{item.author}}</span>
+      <span ng-bind="item.text"></span>
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.14/angular.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.14/angular-animate.js"></script>
+  <script src="angular.js"></script>
+  <script src="angular-animate.js"></script>
   <script src="script.js"></script>
 </body>
 
